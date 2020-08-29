@@ -14,7 +14,11 @@ const cards = {
 };
 
 const deckOfCards = {
-	deck: [ ...cards.makeDeck() ],
+	deck: [],
+	initDeck() {
+		this.deck = [];
+        this.deck = [ ...cards.makeDeck() ];
+	},
 	shuffleDeck() {
 		const { deck } = this;
 		for (let i = deck.length - 1; i > 0; i--) {
@@ -23,8 +27,10 @@ const deckOfCards = {
 			deck[i] = deck[randomPos];
 			deck[randomPos] = temp;
 		}
-    },
-    
+	},
+	dealCard() {
+		return this.deck.shift();
+	}
 };
 
-
+deckOfCards.initDeck();
